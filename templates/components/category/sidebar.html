@@ -1,4 +1,15 @@
 <nav>
+    <!-- Categories side nav bar -->
+    <div class="sidebarBlock"> 
+        <h5 class="sidebarBlock-heading">{{lang 'category.label'}}</h5>
+        <ul class="navList">
+            {{#each categories}}
+            <li class="navList-item">
+                <a class="navList-action {{#if selected }} is-active {{/if}}" href="{{url}}" alt="{{name}}" title="{{name}}">{{name}}</a>
+            </li>
+            {{/each}}
+        </ul>
+    </div>
     {{#if category.subcategories}}
         <div class="sidebarBlock">
             <h5 class="sidebarBlock-heading">{{category.name}}</h5>
@@ -15,6 +26,8 @@
     {{#if category.faceted_search_enabled}}
         {{> components/faceted-search/index category}}
     {{else}}
-        {{> components/category/shop-by-price shop_by_price=category.shop_by_price category_url=category.url}}
+        {{#if category.shop_by_price}} <!-- moved shop by price conditional logic her so that the sidebar would always be visible with the catagories navigation -->
+            {{> components/category/shop-by-price shop_by_price=category.shop_by_price category_url=category.url}}
+        {{/if}}
     {{/if}}
 </nav>
