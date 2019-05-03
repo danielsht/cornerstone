@@ -32,6 +32,9 @@ category:
     </aside>
 
     <main class="page-content" id="product-listing-container">
+        <div class="banners"> 
+            <a class="button" id="button-to-cart">Click Me To Add 3 Products To Your Cart!</a>
+        </div>
         {{#if category.products}}
             {{> components/category/product-listing}}
         {{else}}
